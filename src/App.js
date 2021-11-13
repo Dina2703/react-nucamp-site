@@ -5,7 +5,6 @@ import './App.css';
 import { CAMPSITES } from './shared/campsites'
 
 
-
 class App extends Component {
     constructor (props) {
         super(props);
