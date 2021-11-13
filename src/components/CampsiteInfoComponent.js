@@ -6,12 +6,12 @@ class  CampsiteInfo  extends Component {
         return (
             <div className="col-md-5 m-1" >
             <Card>
-            <CardImg top src={this.props.campsite.image} alt={this.props.campsite.name} />
-            <CardBody>
-                <CardTitle>{this.props.campsite.name}</CardTitle>
-                <CardText>{this.props.campsite.description}</CardText>
-            </CardBody>
-        </Card>
+                <CardImg top src={this.props.campsite.image} alt={this.props.campsite.name} />
+                <CardBody>
+                    <CardTitle>{this.props.campsite.name}</CardTitle>
+                    <CardText>{this.props.campsite.description}</CardText>
+                </CardBody>
+            </Card>
             </div>
         );
     }
@@ -24,10 +24,10 @@ class  CampsiteInfo  extends Component {
                 {comments.map(comment => {
                     return (
                         <div key={comment.id}>
-                        <p>
-                        {comment.text}
-                        {comment.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}
-                        </p>
+                        <p><em>
+                        {comment.text} <br />
+                        -- {comment.author},  {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}
+                        </em></p>
                         </div>
                     );
                 }
