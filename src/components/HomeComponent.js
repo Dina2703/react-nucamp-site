@@ -7,4 +7,4 @@ function Home(props) {
     </div>
   );
 }
-expect default Home;
+export default Home;
