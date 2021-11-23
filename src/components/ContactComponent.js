@@ -37,7 +37,7 @@ class Contact extends React.Component {
       if(firstName.length < 2){
         errors.firstName = 'First name must be at least 2 character.';
       } else if(firstName.length > 15){
-        errors.firstName = 'First name must be 15 or less characters.'
+        errors.firstName = 'First name must be 15 or less characters.';
       }
     }
 
@@ -45,7 +45,7 @@ class Contact extends React.Component {
       if(lastName.length < 2){
         errors.lastName = 'Last name must be at least 2 character.';
       } else if(lastName.length > 15){
-        errors.lastName = 'Last name must be 15 or less characters.'
+        errors.lastName = 'Last name must be 15 or less characters.';
       }
     }
 
@@ -85,6 +85,8 @@ class Contact extends React.Component {
   }
 
   render(){
+
+    const errors = this.validate(this.state.firstName, this.state.lastName, this.state.phoneNum, this.state.email);
     return (
       <div className="container">
         <div className="row">
@@ -126,8 +128,10 @@ class Contact extends React.Component {
                           <Input type="text" id="firstName" name="firstName"
                               placeholder="First Name"
                               value={this.state.firstName}
-                              onBlur={this.handlBlur('firstName')}
+                              invalid={errors.firstName}
+                              onBlur={this.handleBlur("firstName")}
                               onChange={this.handleInputChange} />
+                          <FormFeedback>{errors.firstName}</FormFeedback>
                       </Col>
                   </FormGroup>
                   <FormGroup row>
@@ -136,8 +140,10 @@ class Contact extends React.Component {
                           <Input type="text" id="lastName" name="lastName"
                               placeholder="Last Name"
                               value={this.state.lastName}
-                              onBlur={this.handlBlur('lastName')}
+                              invalid={errors.lastName}
+                              onBlur={this.handleBlur('lastName')}
                               onChange={this.handleInputChange} />
+                              <FormFeedback>{errors.lastName}</FormFeedback>
                       </Col>
                   </FormGroup>
                   <FormGroup row>
@@ -146,8 +152,10 @@ class Contact extends React.Component {
                           <Input type="tel" id="phoneNum" name="phoneNum"
                               placeholder="Phone number"
                               value={this.state.phoneNum}
-                              onBlur={this.handlBlur('phoneNum')}
+                              invalid={errors.phoneNum}
+                              onBlur={this.handleBlur('phoneNum')}
                               onChange={this.handleInputChange} />
+                              <FormFeedback>{errors.phoneNum}</FormFeedback>
                       </Col>
                   </FormGroup>
                   <FormGroup row>
@@ -156,8 +164,10 @@ class Contact extends React.Component {
                           <Input type="email" id="email" name="email"
                               placeholder="Email"
                               value={this.state.email}
-                              onBlur={this.handlBlur('email')}
+                              invalid={errors.email}
+                              onBlur={this.handleBlur('email')}
                               onChange={this.handleInputChange} />
+                              <FormFeedback>{errors.email}</FormFeedback>
                       </Col>
                   </FormGroup>
                   <FormGroup row>
