@@ -103,6 +103,22 @@ class Contact extends React.Component {
                     name="firstName"
                     placeholder="First Name"
                     className="form-control"
+                    validators = {{
+                      required,
+                      minLength: minLength(2),
+                      maxLength: maxLength(15)
+                    }}
+                  />
+                  <Errors 
+                    className="text-danger
+                    model=".firstName"
+                    show="touched"
+                    component="div"
+                    messages={{
+                      required: 'Required',
+                      minLength: 'Must be at least 2 characters',
+                      maxLenght: 'Must be 15 characters or less'
+                    }} 
                   />
                 </Col>
               </Row>
@@ -117,6 +133,22 @@ class Contact extends React.Component {
                     name="lastName"
                     placeholder="Last Name"
                     className="form-control"
+                    validators = {{
+                      required,
+                      minLength: minLength(2),
+                      maxLength: maxLength(15)
+                    }}
+                  />
+                  <Errors 
+                    className="text-danger
+                    model=".lastName"
+                    show="touched"
+                    component="div"
+                    messages={{
+                      required: 'Required',
+                      minLength: 'Must be at least 2 characters',
+                      maxLenght: 'Must be 15 characters or less'
+                    }} 
                   />
                 </Col>
               </Row>
@@ -131,6 +163,24 @@ class Contact extends React.Component {
                     name="phoneNum"
                     placeholder="Phone number"
                     className="form-control"
+                    validators = {{
+                      required,
+                      minLength: minLength(10),
+                      maxLength: maxLength(15),
+                      isNumber
+                    }}
+                  />
+                  <Errors 
+                    className="text-danger
+                    model=".phoneNum"
+                    show="touched"
+                    component="div"
+                    messages={{
+                      required: 'Required',
+                      minLength: 'Must be at least 10 numbers',
+                      maxLenght: 'Must be 15 numbers or less',
+                      isNumber: 'Must be a number'
+                    }} 
                   />
                 </Col>
               </Row>
@@ -145,6 +195,20 @@ class Contact extends React.Component {
                     name="email"
                     placeholder="Email"
                     className="form-control"
+                    validators = {{
+                      required,
+                      validEmail
+                    }}
+                  />
+                  <Errors 
+                    className="text-danger
+                    model=".email"
+                    show="touched"
+                    component="div"
+                    messages={{
+                      required: 'Required',
+                      validEmail: 'Invalid email address'
+                    }} 
                   />
                 </Col>
               </Row>
