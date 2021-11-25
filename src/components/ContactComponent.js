@@ -109,16 +109,16 @@ class Contact extends React.Component {
                       maxLength: maxLength(15)
                     }}
                   />
-                  <Errors 
-                    className="text-danger
+                  <Errors
+                    className="text-danger"
                     model=".firstName"
                     show="touched"
                     component="div"
                     messages={{
-                      required: 'Required',
-                      minLength: 'Must be at least 2 characters',
-                      maxLenght: 'Must be 15 characters or less'
-                    }} 
+                        required: 'Required',
+                        minLength: 'Must be at least 2 characters',
+                        maxLength: 'Must be 15 characters or less'
+                    }}
                   />
                 </Col>
               </Row>
@@ -140,7 +140,7 @@ class Contact extends React.Component {
                     }}
                   />
                   <Errors 
-                    className="text-danger
+                    className="text-danger"
                     model=".lastName"
                     show="touched"
                     component="div"
@@ -171,7 +171,7 @@ class Contact extends React.Component {
                     }}
                   />
                   <Errors 
-                    className="text-danger
+                    className="text-danger"
                     model=".phoneNum"
                     show="touched"
                     component="div"
@@ -201,7 +201,7 @@ class Contact extends React.Component {
                     }}
                   />
                   <Errors 
-                    className="text-danger
+                    className="text-danger"
                     model=".email"
                     show="touched"
                     component="div"
