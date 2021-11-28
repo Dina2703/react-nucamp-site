@@ -1,7 +1,111 @@
 import React from "react";
-import { Card, CardImg, CardText, CardBody, Breadcrumb, BreadcrumbItem } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import {
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  Breadcrumb,
+  BreadcrumbItem,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  Label,
+} from "reactstrap";
+import { Link } from "react-router-dom";
+import { Control, LocalForm, Errors } from "react-redux-form";
 
+
+const minLength = length => value => value?.length >= length ? true : false;
+const maxLength = length => value => value?.length <= length ? true : false;
+
+class CommentForm extends React.Component {
+  state = {
+    isModalOpen: false,
+  };
+
+  toggleModal = () => {
+    this.setState({
+      isModalOpen: !this.state.isModalOpen,
+    });
+  };
+
+  handleSubmit = (values) => {
+    console.log("Current State is: " + JSON.stringify(values));
+    alert("Current State is: " + JSON.stringify(values));
+    this.toggleModal();
+  };
+
+  render() {
+    return (
+      <div>
+        <Button outline onClick={this.toggleModal}>
+          <i className="fa fa-lg fa-pencil" /> Submit Comment
+        </Button>
+        <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+          <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
+          <ModalBody>
+            <LocalForm onSubmit={values => this.handleSubmit(values)}>
+              <div className="form-group">
+                <Label htmlFor="rating">Rating</Label>
+                <Control.select
+                  defaultValue="1"
+                  id="rating"
+                  model=".rating"
+                  name="rating"
+                  className="form-control"
+                >
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </Control.select>
+              </div>
+              <div className="form-group">
+                <Label htmlFor="author">Your Name</Label>
+                <Control.text
+                  id="author"
+                  model=".author"
+                  name="author"
+                  placeholder="Your Name"
+                  className="form-control"
+                  validators = {{
+                    minLength: minLength(2),
+                    maxLength: maxLength(15)
+                  }}
+                />
+                <Errors 
+                className="text-danger"
+                model=".author"
+                show="touched"
+                component="div"
+                  messages= {{
+                    minLength: 'Must be at least 2 characters',
+                    maxLength: 'Must be 15 characters or less'
+                  }}
+                />
+              </div>
+              <div className="form-group">
+                <Label htmlFor="text">Comment</Label>
+                <Control.textarea
+                  id="text"
+                  model=".text"
+                  name="text"
+                  rows="6"
+                  className="form-control"
+                />
+              </div>
+              <Button type="submit" value="submit" color="primary">
+                Login
+              </Button>
+            </LocalForm>
+          </ModalBody>
+        </Modal>
+      </div>
+    );
+  }
+}
 
 function RenderCampsite({ campsite }) {
   return (
@@ -38,6 +142,7 @@ function RenderComments({ comments }) {
             </div>
           );
         })}
+        <CommentForm />
       </div>
     );
   }
@@ -51,7 +156,9 @@ function CampsiteInfo(props) {
         <div className="row">
           <div className="col">
             <Breadcrumb>
-              <BreadcrumbItem><Link to='/directory'>Directory</Link></BreadcrumbItem>
+              <BreadcrumbItem>
+                <Link to="/directory">Directory</Link>
+              </BreadcrumbItem>
               <BreadcrumbItem active>{props.campsite.name}</BreadcrumbItem>
             </Breadcrumb>
             <h2>{props.campsite.name}</h2>
