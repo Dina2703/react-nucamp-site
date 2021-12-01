@@ -8,7 +8,7 @@ import Contact from './ContactComponent';
 import About from './AboutComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { actions } from 'react-redux-form';
+import { actions } from 'react-redux-form'; 
 import { addComment, fetchCampsites } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
@@ -19,15 +19,15 @@ const mapStateToProps = state => {
       promotions: state.promotions
   };
 };
-
+/* the mapDispatchToProps connects the action objects to the Main Component, makes the action objects abailable to the Main Component as props */ 
 const mapDispatchToProps = {
   addComment: (campsiteId, rating, author, text) => (addComment(campsiteId, rating, author, text )),
   fetchCampsites: () => (fetchCampsites()),
-  resetFeedbackForm: () => (actions.reset('feedbackFrom'))
+  resetFeedbackForm: () => (actions.reset('feedbackForm'))
 };
 
 class Main extends Component {
-
+/*The componentDidMount() method allows us to execute the React code right after when the component is placed in the DOM. This method is called during the Mounting phase of the React Life-cycle i.e after the component is rendered.*/
   componentDidMount() {
     this.props.fetchCampsites();
   }
