@@ -61,7 +61,7 @@ class Header extends Component {
               <Transform enterTransform="translateX(100px)" exitTransform="translateX(-1000px)" in>
                     <h1>Nucamp</h1>
               </Transform>
-              <Transform exitTransform="rotate(90deg)" in>
+              <Transform enterTransform="translateX(100px)" exitTransform="translateX(2000px)" in>
                     <h2>a better way to camp</h2>
               </Transform>
               </div>
