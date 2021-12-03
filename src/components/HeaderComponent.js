@@ -17,6 +17,8 @@ import {
   Label,
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
+import { Transform } from 'react-animation-components';
+
 
 class Header extends Component {
   constructor(props) {
@@ -56,8 +58,12 @@ class Header extends Component {
           <div className="container">
             <div className="row">
               <div className="col">
-                <h1>Nucamp</h1>
-                <h2>a better way to camp</h2>
+              <Transform enterTransform="translateX(100px)" exitTransform="translateX(-1000px)" in>
+                    <h1>Nucamp</h1>
+              </Transform>
+              <Transform exitTransform="rotate(90deg)" in>
+                    <h2>a better way to camp</h2>
+              </Transform>
               </div>
             </div>
           </div>
