@@ -45,12 +45,12 @@ export const campsitesLoading = () => ({
 
 export const campsitesFailed = (errMess) => ({
   type: ActionTypes.CAMPSITES_FAILED,
-  payload: errMess,
+  payload: errMess
 });
 
 export const addCampsites = (campsites) => ({
   type: ActionTypes.ADD_CAMPSITES,
-  payload: campsites,
+  payload: campsites
 });
 
 export const fetchComments = () => (dispatch) => {
@@ -79,7 +79,7 @@ export const fetchComments = () => (dispatch) => {
 
 export const commentsFailed = (errMess) => ({
   type: ActionTypes.COMMENTS_FAILED,
-  payload: errMess,
+  payload: errMess
 });
 
 export const addComments = (comments) => ({
