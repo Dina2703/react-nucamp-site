@@ -17,9 +17,9 @@ function RenderCard({ item, isLoading, errMess }) {
         transformProps={{
           exitTransform: 'scale(0.5) translateY(-50%)'
         }} >
-        <Card>
+        <Card className="home p-2" styles={{height:'400px'}}>
           <CardImg src={baseUrl + item.image} alt={item.name} />
-          <CardBody>
+          <CardBody style={{ display: "flex", flexDirection: 'column', justifyContent: 'flex-end' }}>
               <CardTitle>{item.name}</CardTitle>
               <CardText>{item.description}</CardText>
           </CardBody>
@@ -32,23 +32,27 @@ function RenderCard({ item, isLoading, errMess }) {
 function Home(props) {
   return (
       <div className="container">
-          <div className="row">
-              <div className="col-md m-1">
+          <div className="row ">
+              <div className="col-md my-3 m-1 ">
                   <RenderCard 
                     item={props.campsite} 
                     isLoading={props.campsitesLoading}
                     errMess={props.campsitesErrMess}
                   />
               </div>
-              <div className="col-md m-1">
+              <div className="col-md my-3 m-1">
                   <RenderCard 
                     item={props.promotion} 
                     isLoading={props.promotionLoading}
                     errMess={props.promotionErrMess}
                   />
               </div>
-              <div className="col-md m-1">
-                  <RenderCard item={props.partner} />
+              <div className="col-md my-3 m-1">
+                  <RenderCard 
+                    item={props.partner} 
+                    isLoading={props.partnerLoading}
+                    errMess={props.partnerErrMess}
+                  />
               </div>
           </div>
       </div>
